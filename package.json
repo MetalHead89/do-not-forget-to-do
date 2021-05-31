@@ -1,0 +1,19 @@
+{
+  "name": "do-not-forget-to-do",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MetalHead89/do-not-forget-to-do.git"
+  },
+  "author": "Vitalij Bakalov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MetalHead89/do-not-forget-to-do/issues"
+  },
+  "homepage": "https://github.com/MetalHead89/do-not-forget-to-do#readme"
+}
