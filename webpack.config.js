@@ -12,7 +12,7 @@ module.exports = {
     filename: '[name].bundle.js',
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
+    extensions: ['.ts', '.tsx', '.js', '.css', '.scss'],
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -48,7 +48,7 @@ module.exports = {
             options: {
               sourceMap: true,
               postcssOptions: {
-                config: path.resolve(__dirname, 'src/postcss.config.js'),
+                config: path.resolve(__dirname, './postcss.config.js'),
               },
             },
           },
@@ -72,7 +72,7 @@ module.exports = {
             options: {
               sourceMap: true,
               postcssOptions: {
-                config: path.resolve(__dirname, 'src/postcss.config.js'),
+                config: path.resolve(__dirname, './postcss.config.js'),
               },
             },
           },
