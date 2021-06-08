@@ -1,3 +1,8 @@
+interface IAction {
+  type: string;
+  args?: any;
+}
+
 interface IList {
   listItem: string[];
 }
@@ -8,4 +13,4 @@ interface IListsContainerState {
   };
 }
 
-export { IListsContainerState };
+export { IAction, IListsContainerState };
