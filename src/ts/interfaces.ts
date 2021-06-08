@@ -3,6 +3,14 @@ interface IAction {
   args?: any;
 }
 
+interface IDispatch {
+  (action: IAction): void;
+}
+
+interface IState {
+  listsContainer: IListsContainerState;
+}
+
 interface IList {
   listItem: string[];
 }
@@ -13,4 +21,4 @@ interface IListsContainerState {
   };
 }
 
-export { IAction, IList, IListsContainerState };
+export { IAction, IList, IListsContainerState, IDispatch, IState };
