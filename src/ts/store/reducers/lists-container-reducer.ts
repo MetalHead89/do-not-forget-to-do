@@ -7,9 +7,8 @@ const initialState = {
   },
 };
 
-const createNewListCreator = (list: IList): IAction => ({
+const createNewListCreator = (): IAction => ({
   type: CREATE_NEW_LIST,
-  args: { list },
 });
 
 const listsContainerReducer = (
@@ -21,7 +20,7 @@ const listsContainerReducer = (
       return {
         ...state,
         listsContainer: {
-          lists: state.listsContainer.lists.concat(action.args.list),
+          lists: state.listsContainer.lists.concat([]),
         },
       };
     default:
