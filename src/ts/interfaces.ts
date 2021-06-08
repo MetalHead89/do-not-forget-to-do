@@ -13,4 +13,4 @@ interface IListsContainerState {
   };
 }
 
-export { IAction, IListsContainerState };
+export { IAction, IList, IListsContainerState };
