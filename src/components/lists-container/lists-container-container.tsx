@@ -3,9 +3,9 @@ import { IDispatch, IState } from '../../ts/interfaces';
 import listsContainer from './lists-container';
 
 const mapStateToProps = (state: IState) => {
-  return { listsContainer: state.listsContainer };
+  return { lists: state.listsContainer.lists };
 };
 
-const listsContainerContainer = connect(mapStateToProps)(listsContainer);
+const ListsContainerContainer = connect(mapStateToProps)(listsContainer);
 
-export default listsContainerContainer;
+export default ListsContainerContainer;

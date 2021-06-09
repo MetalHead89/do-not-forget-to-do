@@ -2,7 +2,7 @@ import { IAction, IList, IListsContainerState } from '../../interfaces';
 
 const CREATE_NEW_LIST = 'CREATE-NEW-LIST';
 const initialState = {
-  lists: [],
+  lists: [{ listItem: [] }, { listItem: [] }, { listItem: [] }],
 };
 
 const createNewListCreator = (): IAction => ({
