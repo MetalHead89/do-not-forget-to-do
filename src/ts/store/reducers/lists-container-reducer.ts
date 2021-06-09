@@ -2,9 +2,7 @@ import { IAction, IList, IListsContainerState } from '../../interfaces';
 
 const CREATE_NEW_LIST = 'CREATE-NEW-LIST';
 const initialState = {
-  listsContainer: {
-    lists: [],
-  },
+  lists: [],
 };
 
 const createNewListCreator = (): IAction => ({
@@ -19,9 +17,7 @@ const listsContainerReducer = (
     case CREATE_NEW_LIST:
       return {
         ...state,
-        listsContainer: {
-          lists: state.listsContainer.lists.concat([]),
-        },
+        lists: state.lists.concat([]),
       };
     default:
       return state;

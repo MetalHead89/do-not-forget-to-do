@@ -16,9 +16,7 @@ interface IList {
 }
 
 interface IListsContainerState {
-  listsContainer: {
-    lists: IList[];
-  };
+  lists: IList[];
 }
 
 export { IAction, IList, IListsContainerState, IDispatch, IState };
