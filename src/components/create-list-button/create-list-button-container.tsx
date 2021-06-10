@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { IDispatch } from '../../ts/interfaces';
 import { createNewListCreator } from '../../ts/store/reducers/lists-container-reducer';
-import addListButton from './add-list-button';
+import createListButton from './create-list-button';
 
 const mapDispatchToProps = (dispatch: IDispatch) => {
   return {
@@ -11,6 +11,6 @@ const mapDispatchToProps = (dispatch: IDispatch) => {
   };
 };
 
-const addListButtonContainer = connect(mapDispatchToProps)(addListButton);
+const createListButtonContainer = connect(mapDispatchToProps)(createListButton);
 
-export default addListButtonContainer;
+export default createListButtonContainer;
