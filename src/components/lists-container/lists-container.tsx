@@ -1,5 +1,6 @@
 import React from 'react';
 import { IListsContainerState } from '../../ts/interfaces';
+import './lists-container.scss';
 
 const ListsContainer = (props: IListsContainerState) => {
   const lists = props.lists.map((item) => {
