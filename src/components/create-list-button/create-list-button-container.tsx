@@ -5,12 +5,15 @@ import createListButton from './create-list-button';
 
 const mapDispatchToProps = (dispatch: IDispatch) => {
   return {
-    createNewList: (): void => {
+    clickToButton: () => {
       dispatch(createNewListCreator());
     },
   };
 };
 
-const createListButtonContainer = connect(mapDispatchToProps)(createListButton);
+const createListButtonContainer = connect(
+  null,
+  mapDispatchToProps,
+)(createListButton);
 
 export default createListButtonContainer;

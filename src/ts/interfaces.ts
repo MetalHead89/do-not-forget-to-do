@@ -19,4 +19,15 @@ interface IListsContainerState {
   lists: IList[];
 }
 
-export { IAction, IList, IListsContainerState, IDispatch, IState };
+interface ICreateListButton {
+  clickToButton: () => void;
+}
+
+export {
+  IAction,
+  IList,
+  IListsContainerState,
+  IDispatch,
+  IState,
+  ICreateListButton,
+};

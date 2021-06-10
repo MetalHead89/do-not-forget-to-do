@@ -15,9 +15,10 @@ const listsContainerReducer = (
 ): IListsContainerState => {
   switch (action.type) {
     case CREATE_NEW_LIST:
+      console.log(state);
       return {
         ...state,
-        lists: state.lists.concat([]),
+        lists: state.lists.concat([{ listItem: [] }]),
       };
     default:
       return state;

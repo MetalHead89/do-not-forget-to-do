@@ -1,5 +1,5 @@
 import React from 'react';
-import CreateListButton from '../create-list-button/create-list-button';
+import CreateListButtonContainer from '../create-list-button/create-list-button-container';
 import ListsContainerContainer from '../lists-container/lists-container-container';
 import './app.scss';
 
@@ -7,7 +7,7 @@ const App = (): JSX.Element => {
   return (
     <div className="app">
       <ListsContainerContainer />
-      <CreateListButton />
+      <CreateListButtonContainer />
     </div>
   );
 };
