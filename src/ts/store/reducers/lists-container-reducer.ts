@@ -1,8 +1,8 @@
-import { IAction, IList, IListsContainerState } from '../../interfaces';
+import { IAction, IListsContainerState } from '../../interfaces';
 
 const CREATE_NEW_LIST = 'CREATE-NEW-LIST';
 const initialState = {
-  lists: [{ listItem: [] }, { listItem: [] }, { listItem: [] }],
+  lists: [],
 };
 
 const createNewListCreator = (): IAction => ({
@@ -11,15 +11,18 @@ const createNewListCreator = (): IAction => ({
 
 const listsContainerReducer = (
   state: IListsContainerState = initialState,
-  action: IAction,
+  action: IAction
 ): IListsContainerState => {
   switch (action.type) {
     case CREATE_NEW_LIST:
-      console.log(state);
+      const lastId =
+        state.lists.length > 0 ? state.lists[state.lists.length - 1].id : 0;
+
       return {
         ...state,
-        lists: state.lists.concat([{ listItem: [] }]),
+        lists: state.lists.concat([{ id: lastId + 1, items: [] }]),
       };
+
     default:
       return state;
   }

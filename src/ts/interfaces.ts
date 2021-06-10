@@ -12,7 +12,8 @@ interface IState {
 }
 
 interface IList {
-  listItem: string[];
+  id: number;
+  items: string[];
 }
 
 interface IListsContainerState {
