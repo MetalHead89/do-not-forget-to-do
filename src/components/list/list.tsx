@@ -3,7 +3,14 @@ import { IList } from '../../ts/interfaces';
 import './list.scss';
 
 const List = (props: IList) => {
-  return <div className="list"></div>;
+  return (
+    <div className="list">
+      <div className="list__title-section"></div>
+      <div className="list__items-section">
+        <input type="text"></input>
+      </div>
+    </div>
+  );
 };
 
 export default List;
