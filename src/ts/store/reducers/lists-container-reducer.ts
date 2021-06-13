@@ -20,7 +20,9 @@ const listsContainerReducer = (
 
       return {
         ...state,
-        lists: state.lists.concat([{ id: lastId + 1, items: [] }]),
+        lists: state.lists.concat([
+          { id: lastId + 1, title: 'Новый список', items: [] },
+        ]),
       };
 
     default:

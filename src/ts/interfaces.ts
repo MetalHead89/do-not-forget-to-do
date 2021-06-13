@@ -13,6 +13,7 @@ interface IState {
 
 interface IList {
   id: number;
+  title: string;
   items: string[];
 }
 
