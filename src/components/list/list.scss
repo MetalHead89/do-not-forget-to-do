@@ -11,6 +11,17 @@
     padding: 5px;
   }
 
+  &__title {
+    border: none;
+    background: transparent;
+    text-align: center;
+
+    &:focus,
+    &:active {
+      outline: none;
+    }
+  }
+
   &__items-section {
     flex-direction: column;
     align-items: center;

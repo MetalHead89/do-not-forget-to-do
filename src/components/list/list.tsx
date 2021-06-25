@@ -5,7 +5,10 @@ import './list.scss';
 const List = (props: IList) => {
   return (
     <div className="list">
-      <div className="list__title-section">{props.title}</div>
+      {/* <div className="list__title-section">{props.title}</div> */}
+      <div className="list__title-section">
+        <input type="text" className="list__title" value={props.title}></input>
+      </div>
       <div className="list__items-section">
         <input type="text"></input>
       </div>
