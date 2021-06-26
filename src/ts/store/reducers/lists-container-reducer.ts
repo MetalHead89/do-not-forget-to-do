@@ -1,12 +1,18 @@
 import { IAction, IListsContainerState } from '../../interfaces';
 
 const CREATE_NEW_LIST = 'CREATE-NEW-LIST';
+const CHANGE_TITLE = 'CHANGE-TITLE';
 const initialState = {
   lists: [],
 };
 
 const createNewListCreator = (): IAction => ({
+  type: CHANGE_TITLE,
+});
+
+const changeTitleCreator = (id: number, title: string): IAction => ({
   type: CREATE_NEW_LIST,
+  args: { id, title },
 });
 
 const listsContainerReducer = (
@@ -25,6 +31,15 @@ const listsContainerReducer = (
         ]),
       };
 
+    case CHANGE_TITLE:
+      return {
+        ...state,
+        lists: state.lists.map((item) => {
+          return item.id === action.args.id
+            ? { ...item, title: action.args.title }
+            : item;
+        }),
+      };
     default:
       return state;
   }
@@ -32,3 +47,4 @@ const listsContainerReducer = (
 
 export default listsContainerReducer;
 export { createNewListCreator };
+export { changeTitleCreator };
