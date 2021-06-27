@@ -7,11 +7,11 @@ const initialState = {
 };
 
 const createNewListCreator = (): IAction => ({
-  type: CHANGE_TITLE,
+  type: CREATE_NEW_LIST,
 });
 
 const changeTitleCreator = (id: number, title: string): IAction => ({
-  type: CREATE_NEW_LIST,
+  type: CHANGE_TITLE,
   args: { id, title },
 });
 
