@@ -7,7 +7,12 @@ const List = (props: IList) => {
     <div className="list">
       {/* <div className="list__title-section">{props.title}</div> */}
       <div className="list__title-section">
-        <input type="text" className="list__title" value={props.title}></input>
+        <input
+          type="text"
+          className="list__title"
+          value={props.title}
+          onInput={() => props.changeTitle(props.id, props.title)}
+        ></input>
       </div>
       <div className="list__items-section">
         <input type="text"></input>

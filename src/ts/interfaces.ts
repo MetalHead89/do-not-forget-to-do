@@ -15,10 +15,22 @@ interface IList {
   id: number;
   title: string;
   items: string[];
+  changeTitle: (id: number, title: string) => void;
+}
+
+interface IListState {
+  id: number;
+  title: string;
+  items: string[];
+}
+
+interface IListsContainer {
+  lists: IListState[];
+  changeTitle: (id: number, title: string) => void;
 }
 
 interface IListsContainerState {
-  lists: IList[];
+  lists: IListState[];
 }
 
 interface ICreateListButton {
@@ -28,6 +40,7 @@ interface ICreateListButton {
 export {
   IAction,
   IList,
+  IListsContainer,
   IListsContainerState,
   IDispatch,
   IState,
