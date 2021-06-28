@@ -2,6 +2,7 @@ import { IAction, IListsContainerState } from '../../interfaces';
 
 const CREATE_NEW_LIST = 'CREATE-NEW-LIST';
 const CHANGE_TITLE = 'CHANGE-TITLE';
+const ENABLE_TITLE_EDITING_MODE = 'ENABLE-TITLE-EDITING-MODE';
 const initialState = {
   lists: [],
 };
@@ -15,9 +16,14 @@ const changeTitleCreator = (id: number, title: string): IAction => ({
   args: { id, title },
 });
 
+const enableTitleEditingModeCreator = (id: number): IAction => ({
+  type: ENABLE_TITLE_EDITING_MODE,
+  args: { id },
+});
+
 const listsContainerReducer = (
   state: IListsContainerState = initialState,
-  action: IAction
+  action: IAction,
 ): IListsContainerState => {
   switch (action.type) {
     case CREATE_NEW_LIST:
@@ -27,7 +33,7 @@ const listsContainerReducer = (
       return {
         ...state,
         lists: state.lists.concat([
-          { id: lastId + 1, title: 'Новый список', items: [] },
+          { id: lastId + 1, title: 'Новый список', items: [], readonly: true },
         ]),
       };
 
@@ -40,6 +46,17 @@ const listsContainerReducer = (
             : item;
         }),
       };
+
+    case ENABLE_TITLE_EDITING_MODE:
+      return {
+        ...state,
+        lists: state.lists.map((item) => {
+          return item.id === action.args.id
+            ? { ...item, readonly: false }
+            : item;
+        }),
+      };
+
     default:
       return state;
   }
@@ -48,3 +65,4 @@ const listsContainerReducer = (
 export default listsContainerReducer;
 export { createNewListCreator };
 export { changeTitleCreator };
+export { enableTitleEditingModeCreator };
