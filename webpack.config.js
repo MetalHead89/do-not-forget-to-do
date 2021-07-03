@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const StylelintPlugin = require('stylelint-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -21,6 +22,9 @@ module.exports = {
     }),
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin([{ filename: 'style.css' }]),
+    new StylelintPlugin({
+      configFile: path.resolve(__dirname, './stylelint.config.js'),
+    }),
   ],
   module: {
     rules: [
