@@ -3,10 +3,8 @@ import { IList } from '../../ts/interfaces';
 import './list.scss';
 
 const List = (props: IList) => {
-  function handleTitleInput() {
-    console.log('dfsdf');
-    // const value = event.target !== null ? event.target.value : ''
-    // props.changeTitle(props.id, event.target.value);
+  function handleTitleInput(event: React.ChangeEvent<HTMLInputElement>) {
+    props.changeTitle(props.id, event.target.value);
   }
 
   return (
