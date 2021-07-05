@@ -82,3 +82,4 @@ export default listsContainerReducer;
 export { createNewListCreator };
 export { changeTitleCreator };
 export { enableTitleEditingModeCreator };
+export { disableTitleEditingModeCreator };
