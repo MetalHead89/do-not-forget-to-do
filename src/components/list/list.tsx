@@ -38,6 +38,14 @@ const List = (props: IList) => {
     event.target.value = '';
   }
 
+  function handleItemKeyPress(event: React.KeyboardEvent) {
+    const target = event.target;
+
+    if (event.key === 'Enter' && target instanceof HTMLInputElement) {
+      target.blur();
+    }
+  }
+
   return (
     <div className="list">
       <div className="list__title-section">
@@ -58,6 +66,7 @@ const List = (props: IList) => {
           className="list__item-input"
           type="text"
           onBlur={handleItemBlur}
+          onKeyPress={handleItemKeyPress}
         ></input>
       </div>
     </div>
