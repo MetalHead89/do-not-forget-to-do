@@ -34,6 +34,8 @@ const List = (props: IList) => {
 
   function handleItemBlur(event: React.ChangeEvent<HTMLInputElement>) {
     props.addItem(props.id, event.target.value);
+    event.target.focus();
+    event.target.value = '';
   }
 
   return (
