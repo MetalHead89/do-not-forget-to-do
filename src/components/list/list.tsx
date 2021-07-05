@@ -7,8 +7,13 @@ const List = (props: IList) => {
     props.changeTitle(props.id, event.target.value);
   }
 
-  function handleTitleDoubleClick() {
+  function handleTitleDoubleClick(event: React.MouseEvent) {
     props.enableTitleEditingMode(props.id);
+
+    const target = event.target;
+    if (target instanceof HTMLInputElement && target.readOnly) {
+      target.select();
+    }
   }
 
   function handleTitleBlur() {
