@@ -15,6 +15,14 @@ const List = (props: IList) => {
     props.disableTitleEditingMode(props.id);
   }
 
+  function handleTitleKeyPress(event: React.KeyboardEvent) {
+    const target = event.target;
+
+    if (event.key === 'Enter' && target instanceof HTMLInputElement) {
+      target.blur();
+    }
+  }
+
   return (
     <div className="list">
       <div className="list__title-section">
@@ -25,6 +33,7 @@ const List = (props: IList) => {
           onInput={handleTitleInput}
           onDoubleClick={handleTitleDoubleClick}
           onBlur={handleTitleBlur}
+          onKeyPress={handleTitleKeyPress}
           readOnly={props.readonly}
         ></input>
       </div>
