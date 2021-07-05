@@ -4,6 +4,7 @@ const CREATE_NEW_LIST = 'CREATE-NEW-LIST';
 const CHANGE_TITLE = 'CHANGE-TITLE';
 const ENABLE_TITLE_EDITING_MODE = 'ENABLE-TITLE-EDITING-MODE';
 const DISABLE_TITLE_EDITING_MODE = 'DISABLE-TITLE-EDITING-MODE';
+const ADD_ITEM = 'ADD-ITEM';
 const initialState = {
   lists: [],
 };
@@ -25,6 +26,11 @@ const enableTitleEditingModeCreator = (id: number): IAction => ({
 const disableTitleEditingModeCreator = (id: number): IAction => ({
   type: DISABLE_TITLE_EDITING_MODE,
   args: { id },
+});
+
+const addItemCreator = (id: number, item: string): IAction => ({
+  type: ADD_ITEM,
+  args: { id, item },
 });
 
 const listsContainerReducer = (
@@ -73,6 +79,16 @@ const listsContainerReducer = (
         }),
       };
 
+    case ADD_ITEM:
+      return {
+        ...state,
+        lists: state.lists.map((list) => {
+          return list.id === action.args.id
+            ? { ...list, items: [...list.items, action.args.item] }
+            : list;
+        }),
+      };
+
     default:
       return state;
   }
@@ -83,3 +99,4 @@ export { createNewListCreator };
 export { changeTitleCreator };
 export { enableTitleEditingModeCreator };
 export { disableTitleEditingModeCreator };
+export { addItemCreator };
