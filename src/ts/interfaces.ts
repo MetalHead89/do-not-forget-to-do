@@ -18,6 +18,7 @@ interface IList {
   readonly: boolean;
   changeTitle: (id: number, title: string) => void;
   enableTitleEditingMode: (id: number) => void;
+  disableTitleEditingModeCreator: (id: number) => void;
 }
 
 interface IListState {
@@ -31,6 +32,7 @@ interface IListsContainer {
   lists: IListState[];
   changeTitle: (id: number, title: string) => void;
   enableTitleEditingMode: (id: number) => void;
+  disableTitleEditingModeCreator: (id: number) => void;
 }
 
 interface IListsContainerState {
