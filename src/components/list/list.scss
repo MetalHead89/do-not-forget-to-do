@@ -23,7 +23,18 @@
   }
 
   &__items-section {
+    display: flex;
     flex-direction: column;
     align-items: center;
+  }
+
+  &__item {
+    border: none;
+    background: transparent;
+
+    &:focus,
+    &:active {
+      outline: none;
+    }
   }
 }
