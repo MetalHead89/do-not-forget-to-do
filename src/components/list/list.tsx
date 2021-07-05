@@ -3,6 +3,10 @@ import { IList } from '../../ts/interfaces';
 import './list.scss';
 
 const List = (props: IList) => {
+  const items = props.items.map((item) => {
+    return <input className="list__item" type="text" value={item}></input>;
+  });
+
   function handleTitleInput(event: React.ChangeEvent<HTMLInputElement>) {
     props.changeTitle(props.id, event.target.value);
   }
@@ -47,6 +51,7 @@ const List = (props: IList) => {
         ></input>
       </div>
       <div className="list__items-section">
+        {items}
         <input
           className="list__item-input"
           type="text"
