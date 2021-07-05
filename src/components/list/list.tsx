@@ -15,8 +15,8 @@ const List = (props: IList) => {
           className="list__title"
           value={props.title}
           onInput={handleTitleInput}
-          // onDoubleClick={() => props.enableTitleEditingMode(props.id)}
-          // readOnly={props.readonly}
+          onDoubleClick={() => props.enableTitleEditingMode(props.id)}
+          readOnly={props.readonly}
         ></input>
       </div>
       <div className="list__items-section">
