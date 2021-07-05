@@ -7,6 +7,10 @@ const List = (props: IList) => {
     props.changeTitle(props.id, event.target.value);
   }
 
+  function handleTitleDoubleClick() {
+    props.enableTitleEditingMode(props.id);
+  }
+
   return (
     <div className="list">
       <div className="list__title-section">
@@ -15,7 +19,7 @@ const List = (props: IList) => {
           className="list__title"
           value={props.title}
           onInput={handleTitleInput}
-          onDoubleClick={() => props.enableTitleEditingMode(props.id)}
+          onDoubleClick={handleTitleDoubleClick}
           readOnly={props.readonly}
         ></input>
       </div>
