@@ -3,6 +3,7 @@ import { IAction, IListsContainerState } from '../../interfaces';
 const CREATE_NEW_LIST = 'CREATE-NEW-LIST';
 const CHANGE_TITLE = 'CHANGE-TITLE';
 const ENABLE_TITLE_EDITING_MODE = 'ENABLE-TITLE-EDITING-MODE';
+const DISABLE_TITLE_EDITING_MODE = 'DISABLE-TITLE-EDITING-MODE';
 const initialState = {
   lists: [],
 };
@@ -18,6 +19,11 @@ const changeTitleCreator = (id: number, title: string): IAction => ({
 
 const enableTitleEditingModeCreator = (id: number): IAction => ({
   type: ENABLE_TITLE_EDITING_MODE,
+  args: { id },
+});
+
+const disableTitleEditingModeCreator = (id: number): IAction => ({
+  type: DISABLE_TITLE_EDITING_MODE,
   args: { id },
 });
 
@@ -53,6 +59,16 @@ const listsContainerReducer = (
         lists: state.lists.map((item) => {
           return item.id === action.args.id
             ? { ...item, readonly: false }
+            : item;
+        }),
+      };
+
+    case DISABLE_TITLE_EDITING_MODE:
+      return {
+        ...state,
+        lists: state.lists.map((item) => {
+          return item.id === action.args.id
+            ? { ...item, readonly: true }
             : item;
         }),
       };
