@@ -28,6 +28,10 @@ const List = (props: IList) => {
     }
   }
 
+  function handleItemBlur(event: React.ChangeEvent<HTMLInputElement>) {
+    props.addItem(props.id, event.target.value);
+  }
+
   return (
     <div className="list">
       <div className="list__title-section">
@@ -43,7 +47,11 @@ const List = (props: IList) => {
         ></input>
       </div>
       <div className="list__items-section">
-        <input type="text"></input>
+        <input
+          className="list__item-input"
+          type="text"
+          onBlur={handleItemBlur}
+        ></input>
       </div>
     </div>
   );

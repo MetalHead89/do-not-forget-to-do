@@ -13,6 +13,7 @@ const ListsContainer = (props: IListsContainer) => {
         changeTitle={props.changeTitle}
         enableTitleEditingMode={props.enableTitleEditingMode}
         disableTitleEditingMode={props.disableTitleEditingMode}
+        addItem={props.addItem}
       />
     );
   });

@@ -5,6 +5,7 @@ import {
   changeTitleCreator,
   enableTitleEditingModeCreator,
   disableTitleEditingModeCreator,
+  addItemCreator,
 } from '../../ts/store/reducers/lists-container-reducer';
 
 const mapStateToProps = (state: IState) => {
@@ -21,6 +22,9 @@ const mapDispatchToProps = (dispatch: IDispatch) => {
     },
     disableTitleEditingMode: (id: number) => {
       dispatch(disableTitleEditingModeCreator(id));
+    },
+    addItem: (id: number, item: string) => {
+      dispatch(addItemCreator(id, item));
     },
   };
 };
