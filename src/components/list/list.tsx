@@ -14,10 +14,10 @@ const List = (props: IList) => {
   function handleTitleDoubleClick(event: React.MouseEvent) {
     props.enableTitleEditingMode(props.id);
 
-    const target = event.target;
-    if (target instanceof HTMLInputElement && target.readOnly) {
-      target.select();
-    }
+    // const target = event.target;
+    // if (target instanceof HTMLInputElement && target.readOnly) {
+    //   target.select();
+    // }
   }
 
   function handleTitleBlur() {
@@ -30,6 +30,10 @@ const List = (props: IList) => {
     if (event.key === 'Enter' && target instanceof HTMLInputElement) {
       target.blur();
     }
+  }
+
+  function handleTitleFocus(event: React.FocusEvent<HTMLInputElement>) {
+    event.target.select();
   }
 
   function handleItemBlur(event: React.ChangeEvent<HTMLInputElement>) {
@@ -57,12 +61,13 @@ const List = (props: IList) => {
           type="text"
           className="list__title"
           value={props.title}
+          readOnly={props.isReadonly}
+          autoFocus={props.isFocused}
           onInput={handleTitleInput}
           onDoubleClick={handleTitleDoubleClick}
           onBlur={handleTitleBlur}
           onKeyPress={handleTitleKeyPress}
-          readOnly={props.isReadonly}
-          autoFocus={props.isFocused}
+          onFocus={handleTitleFocus}
         ></input>
       </div>
       <div className="list__items-section">
