@@ -83,7 +83,7 @@ const listsContainerReducer = (
       return {
         ...state,
         lists: state.lists.map((list) => {
-          return list.id === action.args.id
+          return list.id === action.args.id && action.args.item !== ''
             ? { ...list, items: [...list.items, action.args.item] }
             : list;
         }),
