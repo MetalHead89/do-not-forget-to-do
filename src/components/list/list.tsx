@@ -34,7 +34,6 @@ const List = (props: IList) => {
 
   function handleItemBlur(event: React.ChangeEvent<HTMLInputElement>) {
     props.addItem(props.id, event.target.value);
-    event.target.focus();
     event.target.value = '';
   }
 
@@ -42,7 +41,12 @@ const List = (props: IList) => {
     const target = event.target;
 
     if (event.key === 'Enter' && target instanceof HTMLInputElement) {
-      target.blur();
+      const target = event.target;
+
+      if (target instanceof HTMLInputElement) {
+        props.addItem(props.id, target.value);
+        target.value = '';
+      }
     }
   }
 
@@ -66,7 +70,7 @@ const List = (props: IList) => {
           className="list__item-input"
           type="text"
           onBlur={handleItemBlur}
-          onKeyPress={handleItemKeyPress}
+          onKeyDown={handleItemKeyPress}
         ></input>
       </div>
     </div>
