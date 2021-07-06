@@ -47,7 +47,7 @@ const listsContainerReducer = (
         lists: state.lists.concat([
           {
             id: lastId + 1,
-            title: 'Новый список',
+            title: '',
             items: [],
             isReadonly: false,
             isFocused: true,

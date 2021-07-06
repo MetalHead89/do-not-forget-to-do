@@ -20,7 +20,11 @@ const List = (props: IList) => {
     // }
   }
 
-  function handleTitleBlur() {
+  function handleTitleBlur(event: React.ChangeEvent<HTMLInputElement>) {
+    if (event.target.value === '') {
+      props.changeTitle(props.id, 'Новый список');
+    }
+
     props.disableTitleEditingMode(props.id);
   }
 
