@@ -61,7 +61,8 @@ const List = (props: IList) => {
           onDoubleClick={handleTitleDoubleClick}
           onBlur={handleTitleBlur}
           onKeyPress={handleTitleKeyPress}
-          readOnly={props.readonly}
+          readOnly={props.isReadonly}
+          autoFocus={props.isFocused}
         ></input>
       </div>
       <div className="list__items-section">

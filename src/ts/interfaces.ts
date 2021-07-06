@@ -15,7 +15,8 @@ interface IList {
   id: number;
   title: string;
   items: string[];
-  readonly: boolean;
+  isReadonly: boolean;
+  isFocused: boolean;
   changeTitle: (id: number, title: string) => void;
   enableTitleEditingMode: (id: number) => void;
   disableTitleEditingMode: (id: number) => void;
@@ -25,7 +26,8 @@ interface IList {
 interface IListState {
   id: number;
   title: string;
-  readonly: boolean;
+  isReadonly: boolean;
+  isFocused: boolean;
   items: string[];
 }
 

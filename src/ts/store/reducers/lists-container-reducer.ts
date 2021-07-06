@@ -45,7 +45,13 @@ const listsContainerReducer = (
       return {
         ...state,
         lists: state.lists.concat([
-          { id: lastId + 1, title: 'Новый список', items: [], readonly: true },
+          {
+            id: lastId + 1,
+            title: 'Новый список',
+            items: [],
+            isReadonly: false,
+            isFocused: true,
+          },
         ]),
       };
 
@@ -64,7 +70,7 @@ const listsContainerReducer = (
         ...state,
         lists: state.lists.map((item) => {
           return item.id === action.args.id
-            ? { ...item, readonly: false }
+            ? { ...item, isReadonly: false }
             : item;
         }),
       };
@@ -74,7 +80,7 @@ const listsContainerReducer = (
         ...state,
         lists: state.lists.map((item) => {
           return item.id === action.args.id
-            ? { ...item, readonly: true }
+            ? { ...item, isReadonly: true, isFocused: false }
             : item;
         }),
       };
