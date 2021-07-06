@@ -21,7 +21,7 @@ const List = (props: IList) => {
   }
 
   function handleTitleBlur(event: React.ChangeEvent<HTMLInputElement>) {
-    if (event.target.value === '') {
+    if (event.target.value.trim() === '') {
       props.changeTitle(props.id, 'Новый список');
     }
 
