@@ -10,6 +10,7 @@ const List = (props: IList) => {
         className="list__item"
         type="text"
         value={item.text}
+        readOnly={item.isReadonly}
       ></input>
     );
   });
