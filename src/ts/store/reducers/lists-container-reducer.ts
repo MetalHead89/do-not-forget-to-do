@@ -3,6 +3,7 @@ import { IAction, IItem, IListsContainerState } from '../../interfaces';
 const CREATE_NEW_LIST = 'CREATE-NEW-LIST';
 const CHANGE_TITLE = 'CHANGE-TITLE';
 const ENABLE_TITLE_EDITING_MODE = 'ENABLE-TITLE-EDITING-MODE';
+const ENABLE_ITEM_EDITING_MODE = 'ENABLE-ITEM-EDITING-MODE';
 const DISABLE_TITLE_EDITING_MODE = 'DISABLE-TITLE-EDITING-MODE';
 const ADD_ITEM = 'ADD-ITEM';
 const initialState = {
@@ -33,13 +34,27 @@ const addItemCreator = (id: number, item: string): IAction => ({
   args: { id, item },
 });
 
+const enableItemEditingModeCreator = (
+  listId: number,
+  itemId: number
+): IAction => ({
+  type: ENABLE_ITEM_EDITING_MODE,
+  args: { listId, itemId },
+});
+
+const toggleListItemsEditingMode = (items: IItem[], id: number): IItem[] => {
+  return items.map((item) =>
+    item.id === id ? { ...item, isReadonley: false } : item
+  );
+};
+
 const getLastItemId = (items: IItem[]): number => {
   return items.reduce((id, item) => (item.id > id ? item.id : id), 0);
 };
 
 const listsContainerReducer = (
   state: IListsContainerState = initialState,
-  action: IAction,
+  action: IAction
 ): IListsContainerState => {
   switch (action.type) {
     case CREATE_NEW_LIST:
@@ -98,8 +113,28 @@ const listsContainerReducer = (
                 ...list,
                 items: [
                   ...list.items,
-                  { id: getLastItemId(list.items) + 1, text: action.args.item },
+                  {
+                    id: getLastItemId(list.items) + 1,
+                    text: action.args.item,
+                    isReadonly: true,
+                  },
                 ],
+              }
+            : list;
+        }),
+      };
+
+    case ENABLE_ITEM_EDITING_MODE:
+      return {
+        ...state,
+        lists: state.lists.map((list) => {
+          return list.id === action.args.listId
+            ? {
+                ...list,
+                items: toggleListItemsEditingMode(
+                  list.items,
+                  action.args.itemId
+                ),
               }
             : list;
         }),
@@ -116,3 +151,4 @@ export { changeTitleCreator };
 export { enableTitleEditingModeCreator };
 export { disableTitleEditingModeCreator };
 export { addItemCreator };
+export { enableItemEditingModeCreator };
