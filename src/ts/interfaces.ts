@@ -14,6 +14,7 @@ interface IState {
 interface IItem {
   id: number;
   text: string;
+  isReadonly: boolean;
 }
 
 interface IList {
