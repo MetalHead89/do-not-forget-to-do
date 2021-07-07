@@ -11,10 +11,15 @@ interface IState {
   listsContainer: IListsContainerState;
 }
 
+interface IItem {
+  id: number;
+  text: string;
+}
+
 interface IList {
   id: number;
   title: string;
-  items: string[];
+  items: IItem[];
   isReadonly: boolean;
   isFocused: boolean;
   changeTitle: (id: number, title: string) => void;
@@ -28,7 +33,7 @@ interface IListState {
   title: string;
   isReadonly: boolean;
   isFocused: boolean;
-  items: string[];
+  items: IItem[];
 }
 
 interface IListsContainer {
@@ -55,4 +60,5 @@ export {
   IDispatch,
   IState,
   ICreateListButton,
+  IItem,
 };

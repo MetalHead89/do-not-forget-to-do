@@ -1,4 +1,4 @@
-import { IAction, IListsContainerState } from '../../interfaces';
+import { IAction, IItem, IListsContainerState } from '../../interfaces';
 
 const CREATE_NEW_LIST = 'CREATE-NEW-LIST';
 const CHANGE_TITLE = 'CHANGE-TITLE';
@@ -32,6 +32,10 @@ const addItemCreator = (id: number, item: string): IAction => ({
   type: ADD_ITEM,
   args: { id, item },
 });
+
+const getLastItemId = (items: IItem[]): number => {
+  return items.reduce((id, item) => (item.id > id ? item.id : id), 0);
+};
 
 const listsContainerReducer = (
   state: IListsContainerState = initialState,
@@ -90,7 +94,13 @@ const listsContainerReducer = (
         ...state,
         lists: state.lists.map((list) => {
           return list.id === action.args.id && action.args.item !== ''
-            ? { ...list, items: [...list.items, action.args.item] }
+            ? {
+                ...list,
+                items: [
+                  ...list.items,
+                  { id: getLastItemId(list.items) + 1, text: action.args.item },
+                ],
+              }
             : list;
         }),
       };

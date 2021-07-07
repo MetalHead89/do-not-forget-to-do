@@ -4,7 +4,7 @@ import './list.scss';
 
 const List = (props: IList) => {
   const items = props.items.map((item) => {
-    return <input className="list__item" type="text" value={item}></input>;
+    return <input className="list__item" type="text" value={item.text}></input>;
   });
 
   function handleTitleInput(event: React.ChangeEvent<HTMLInputElement>) {
