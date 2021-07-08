@@ -27,6 +27,7 @@ interface IList {
   enableTitleEditingMode: (id: number) => void;
   disableTitleEditingMode: (id: number) => void;
   addItem: (id: number, item: string) => void;
+  changeItem: (listId: number, itemId: number, text: string) => void;
 }
 
 interface IListState {
@@ -43,6 +44,7 @@ interface IListsContainer {
   enableTitleEditingMode: (id: number) => void;
   disableTitleEditingMode: (id: number) => void;
   addItem: (id: number, item: string) => void;
+  changeItem: (listId: number, itemId: number, text: string) => void;
 }
 
 interface IListsContainerState {
