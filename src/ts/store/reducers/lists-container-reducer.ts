@@ -6,6 +6,7 @@ const ENABLE_TITLE_EDITING_MODE = 'ENABLE-TITLE-EDITING-MODE';
 const ENABLE_ITEM_EDITING_MODE = 'ENABLE-ITEM-EDITING-MODE';
 const DISABLE_TITLE_EDITING_MODE = 'DISABLE-TITLE-EDITING-MODE';
 const ADD_ITEM = 'ADD-ITEM';
+const CHANGE_ITEM = 'CHANGE-ITEM';
 const initialState = {
   lists: [],
 };
@@ -34,9 +35,18 @@ const addItemCreator = (id: number, item: string): IAction => ({
   args: { id, item },
 });
 
+const changeItemCreator = (
+  listId: number,
+  itemId: number,
+  text: string,
+): IAction => ({
+  type: CHANGE_ITEM,
+  args: { listId, itemId, text },
+});
+
 const enableItemEditingModeCreator = (
   listId: number,
-  itemId: number
+  itemId: number,
 ): IAction => ({
   type: ENABLE_ITEM_EDITING_MODE,
   args: { listId, itemId },
@@ -44,7 +54,7 @@ const enableItemEditingModeCreator = (
 
 const toggleListItemsEditingMode = (items: IItem[], id: number): IItem[] => {
   return items.map((item) =>
-    item.id === id ? { ...item, isReadonley: false } : item
+    item.id === id ? { ...item, isReadonley: false } : item,
   );
 };
 
@@ -54,7 +64,7 @@ const getLastItemId = (items: IItem[]): number => {
 
 const listsContainerReducer = (
   state: IListsContainerState = initialState,
-  action: IAction
+  action: IAction,
 ): IListsContainerState => {
   switch (action.type) {
     case CREATE_NEW_LIST:
@@ -133,7 +143,7 @@ const listsContainerReducer = (
                 ...list,
                 items: toggleListItemsEditingMode(
                   list.items,
-                  action.args.itemId
+                  action.args.itemId,
                 ),
               }
             : list;
@@ -152,3 +162,4 @@ export { enableTitleEditingModeCreator };
 export { disableTitleEditingModeCreator };
 export { addItemCreator };
 export { enableItemEditingModeCreator };
+export { changeItemCreator };
