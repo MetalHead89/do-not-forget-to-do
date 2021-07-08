@@ -19,13 +19,8 @@ const List = (props: IList) => {
     props.changeTitle(props.id, event.target.value);
   }
 
-  function handleTitleDoubleClick(event: React.MouseEvent) {
+  function handleTitleDoubleClick() {
     props.enableTitleEditingMode(props.id);
-
-    // const target = event.target;
-    // if (target instanceof HTMLInputElement && target.readOnly) {
-    //   target.select();
-    // }
   }
 
   function handleTitleBlur(event: React.ChangeEvent<HTMLInputElement>) {
