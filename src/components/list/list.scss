@@ -1,4 +1,6 @@
 .list {
+  box-sizing: border-box;
+  padding: 10px;
   margin: 5px;
   display: flex;
   flex-direction: column;
@@ -6,6 +8,7 @@
   min-width: 200px;
   min-height: 200px;
   background: rgb(226, 226, 226);
+  border-radius: 10px;
 
   &__title-section {
     padding: 5px;
