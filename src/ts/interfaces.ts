@@ -17,12 +17,7 @@ interface IItem {
   isReadonly: boolean;
 }
 
-interface IList {
-  id: number;
-  title: string;
-  items: IItem[];
-  isReadonly: boolean;
-  isFocused: boolean;
+interface IList extends IListState {
   changeTitle: (id: number, title: string) => void;
   enableTitleEditingMode: (id: number) => void;
   disableTitleEditingMode: (id: number) => void;
