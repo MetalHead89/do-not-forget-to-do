@@ -17,14 +17,6 @@ interface IItem {
   isReadonly: boolean;
 }
 
-interface IList extends IListState {
-  changeTitle: (id: number, title: string) => void;
-  enableTitleEditingMode: (id: number) => void;
-  disableTitleEditingMode: (id: number) => void;
-  addItem: (id: number, item: string) => void;
-  changeItem: (listId: number, itemId: number, text: string) => void;
-}
-
 interface IListState {
   id: number;
   title: string;
@@ -33,13 +25,19 @@ interface IListState {
   items: IItem[];
 }
 
-interface IListsContainer {
-  lists: IListState[];
+interface IListMethods {
   changeTitle: (id: number, title: string) => void;
   enableTitleEditingMode: (id: number) => void;
   disableTitleEditingMode: (id: number) => void;
   addItem: (id: number, item: string) => void;
   changeItem: (listId: number, itemId: number, text: string) => void;
+}
+
+interface IList extends IListState, IListMethods {
+}
+
+interface IListsContainer extends IListMethods {
+  lists: IListState[];
 }
 
 interface IListsContainerState {
