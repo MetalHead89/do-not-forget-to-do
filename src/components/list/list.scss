@@ -13,14 +13,24 @@ $list: '.list';
   background: rgb(226, 226, 226);
   border-radius: 10px;
 
-  &:hover::before {
-    position: absolute;
-    content: '';
-    width: 10px;
-    height: 10px;
-    background: black;
-    top: 10px;
-    right: 10px;
+  &__item-input {
+    display: none;
+  }
+
+  &:hover {
+    &::before {
+      position: absolute;
+      content: '';
+      width: 10px;
+      height: 10px;
+      background: black;
+      top: 10px;
+      right: 10px;
+    }
+
+    #{$list}__item-input {
+      display: inline-block;
+    }
   }
 
   &__title-section {
