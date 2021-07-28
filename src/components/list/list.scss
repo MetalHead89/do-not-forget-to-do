@@ -12,6 +12,7 @@ $list: '.list';
   min-height: 200px;
   background: rgb(226, 226, 226);
   border-radius: 10px;
+  box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.2);
 
   &__item-input {
     display: none;
