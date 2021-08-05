@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "webpack --mode development",
     "build": "webpack --mode production",
-    "start": "webpack serve --mode development --open"
+    "start": "webpack serve --mode development --open",
+    "server": "nodemon --watch config --exec 'webpack serve --mode development --open'"
   },
   "repository": {
     "type": "git",
