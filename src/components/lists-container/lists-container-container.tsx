@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { IDispatch, IState } from '../../ts/interfaces';
+import { IDispatch, IList, IState } from '../../ts/interfaces';
 import ListsContainer from './lists-container';
 import {
   changeTitleCreator,
@@ -7,6 +7,7 @@ import {
   disableTitleEditingModeCreator,
   addItemCreator,
   changeItemCreator,
+  setListsCreator,
 } from '../../ts/store/reducers/lists-container-reducer';
 
 const mapStateToProps = (state: IState) => {
@@ -15,6 +16,10 @@ const mapStateToProps = (state: IState) => {
 
 const mapDispatchToProps = (dispatch: IDispatch) => {
   return {
+    setLists: (lists: IList[]) => {
+      dispatch(setListsCreator(lists));
+    },
+
     changeTitle: (id: number, title: string) => {
       dispatch(changeTitleCreator(id, title));
     },
@@ -35,7 +40,7 @@ const mapDispatchToProps = (dispatch: IDispatch) => {
 
 const ListsContainerContainer = connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(ListsContainer);
 
 export default ListsContainerContainer;

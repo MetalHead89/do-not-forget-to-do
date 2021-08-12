@@ -1,5 +1,7 @@
-import { IAction, IItem, IListsContainerState } from '../../interfaces';
+// import axios from 'axios';
+import { IAction, IItem, IList, IListsContainerState } from '../../interfaces';
 
+const SET_LISTS = 'SET-LISTS';
 const CREATE_NEW_LIST = 'CREATE-NEW-LIST';
 const CHANGE_TITLE = 'CHANGE-TITLE';
 const ENABLE_TITLE_EDITING_MODE = 'ENABLE-TITLE-EDITING-MODE';
@@ -10,6 +12,11 @@ const CHANGE_ITEM = 'CHANGE-ITEM';
 const initialState = {
   lists: [],
 };
+
+const setListsCreator = (lists: IList[]): IAction => ({
+  type: SET_LISTS,
+  args: { lists },
+});
 
 const createNewListCreator = (): IAction => ({
   type: CREATE_NEW_LIST,
@@ -38,7 +45,7 @@ const addItemCreator = (id: number, item: string): IAction => ({
 const changeItemCreator = (
   listId: number,
   itemId: number,
-  text: string,
+  text: string
 ): IAction => ({
   type: CHANGE_ITEM,
   args: { listId, itemId, text },
@@ -46,7 +53,7 @@ const changeItemCreator = (
 
 const enableItemEditingModeCreator = (
   listId: number,
-  itemId: number,
+  itemId: number
 ): IAction => ({
   type: ENABLE_ITEM_EDITING_MODE,
   args: { listId, itemId },
@@ -54,7 +61,7 @@ const enableItemEditingModeCreator = (
 
 const toggleListItemsEditingMode = (items: IItem[], id: number): IItem[] => {
   return items.map((item) =>
-    item.id === id ? { ...item, isReadonley: false } : item,
+    item.id === id ? { ...item, isReadonley: false } : item
   );
 };
 
@@ -64,9 +71,15 @@ const getLastItemId = (items: IItem[]): number => {
 
 const listsContainerReducer = (
   state: IListsContainerState = initialState,
-  action: IAction,
+  action: IAction
 ): IListsContainerState => {
   switch (action.type) {
+    case SET_LISTS:
+      return {
+        ...state,
+        lists: [...state.lists, ...action.args.lists],
+      };
+
     case CREATE_NEW_LIST:
       const lastId =
         state.lists.length > 0 ? state.lists[state.lists.length - 1].id : 0;
@@ -143,7 +156,7 @@ const listsContainerReducer = (
                 ...list,
                 items: toggleListItemsEditingMode(
                   list.items,
-                  action.args.itemId,
+                  action.args.itemId
                 ),
               }
             : list;
@@ -156,6 +169,7 @@ const listsContainerReducer = (
 };
 
 export default listsContainerReducer;
+export { setListsCreator };
 export { createNewListCreator };
 export { changeTitleCreator };
 export { enableTitleEditingModeCreator };

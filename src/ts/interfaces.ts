@@ -33,11 +33,11 @@ interface IListMethods {
   changeItem: (listId: number, itemId: number, text: string) => void;
 }
 
-interface IList extends IListState, IListMethods {
-}
+interface IList extends IListState, IListMethods {}
 
 interface IListsContainer extends IListMethods {
   lists: IListState[];
+  setLists: (lists: IList[]) => void;
 }
 
 interface IListsContainerState {
