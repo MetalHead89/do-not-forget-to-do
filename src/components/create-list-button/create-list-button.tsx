@@ -10,7 +10,7 @@ function handleCreateListButtonClick() {
     isReadonly: false,
     isFocused: true,
   });
-  console.log('qwer');
+  
   return promise.then((response) => response.data);
 }
 
@@ -19,7 +19,6 @@ const CreateListButton = (props: ICreateListButton) => {
     <button
       className="create-list-button"
       onClick={ handleCreateListButtonClick }
-      // onClick={() => props.clickToButton()}
     />
   );
 };

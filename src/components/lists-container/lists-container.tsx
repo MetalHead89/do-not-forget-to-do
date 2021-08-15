@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React from 'react';
 import { IListsContainer } from '../../ts/interfaces';
-import CreateListButtonContainer from '../create-list-button/create-list-button-container';
+import CreateListButton from '../create-list-button/create-list-button';
 import List from '../list/list';
 import './lists-container.scss';
 
@@ -29,7 +29,7 @@ const ListsContainer = (props: IListsContainer) => {
   return (
     <div className="lists-container">
       {lists}
-      <CreateListButtonContainer />
+      <CreateListButton />
     </div>
   );
 };

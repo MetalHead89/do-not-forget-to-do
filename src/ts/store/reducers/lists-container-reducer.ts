@@ -2,7 +2,6 @@
 import { IAction, IItem, IList, IListsContainerState } from '../../interfaces';
 
 const SET_LISTS = 'SET-LISTS';
-const CREATE_NEW_LIST = 'CREATE-NEW-LIST';
 const CHANGE_TITLE = 'CHANGE-TITLE';
 const ENABLE_TITLE_EDITING_MODE = 'ENABLE-TITLE-EDITING-MODE';
 const ENABLE_ITEM_EDITING_MODE = 'ENABLE-ITEM-EDITING-MODE';
@@ -16,10 +15,6 @@ const initialState = {
 const setListsCreator = (lists: IList[]): IAction => ({
   type: SET_LISTS,
   args: { lists },
-});
-
-const createNewListCreator = (): IAction => ({
-  type: CREATE_NEW_LIST,
 });
 
 const changeTitleCreator = (id: number, title: string): IAction => ({
@@ -78,23 +73,6 @@ const listsContainerReducer = (
       return {
         ...state,
         lists: [...state.lists, ...action.args.lists],
-      };
-
-    case CREATE_NEW_LIST:
-      const lastId =
-        state.lists.length > 0 ? state.lists[state.lists.length - 1].id : 0;
-
-      return {
-        ...state,
-        lists: state.lists.concat([
-          {
-            id: lastId + 1,
-            title: '',
-            items: [],
-            isReadonly: false,
-            isFocused: true,
-          },
-        ]),
       };
 
     case CHANGE_TITLE:
@@ -170,7 +148,6 @@ const listsContainerReducer = (
 
 export default listsContainerReducer;
 export { setListsCreator };
-export { createNewListCreator };
 export { changeTitleCreator };
 export { enableTitleEditingModeCreator };
 export { disableTitleEditingModeCreator };

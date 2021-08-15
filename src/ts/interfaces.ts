@@ -44,9 +44,7 @@ interface IListsContainerState {
   lists: IListState[];
 }
 
-interface ICreateListButton {
-  clickToButton: () => void;
-}
+interface ICreateListButton {}
 
 export {
   IAction,
