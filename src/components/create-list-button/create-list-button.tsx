@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React from 'react';
-import { ICreateListButton } from '../../ts/interfaces';
 import './create-list-button.scss';
 
 function handleCreateListButtonClick() {
@@ -14,7 +13,7 @@ function handleCreateListButtonClick() {
   return promise.then((response) => response.data);
 }
 
-const CreateListButton = (props: ICreateListButton) => {
+const CreateListButton = () => {
   return (
     <button
       className="create-list-button"

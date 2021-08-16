@@ -44,8 +44,6 @@ interface IListsContainerState {
   lists: IListState[];
 }
 
-interface ICreateListButton {}
-
 export {
   IAction,
   IList,
@@ -53,6 +51,5 @@ export {
   IListsContainerState,
   IDispatch,
   IState,
-  ICreateListButton,
   IItem,
 };
