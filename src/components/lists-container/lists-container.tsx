@@ -7,17 +7,24 @@ import './lists-container.scss';
 
 const ListsContainer = (props: IListsContainer) => {
   if (props.lists.length === 0) {
-    axios.get('http://localhost:5000/api/list/get-lists').then((response) => {
-      const data = response.data.map((list: any) => {
-        const modifiedList = { ...list };
-        modifiedList.id = modifiedList._id;
-        delete modifiedList._id;
+    axios
+      .get('http://localhost:5000/api/list/get-lists')
+      .then((response) => {
+        const data = response.data.map((list: any) => {
+          const modifiedList = { ...list };
+          modifiedList.id = modifiedList._id;
+          delete modifiedList._id;
 
-        return modifiedList;
-      });
+          return modifiedList;
+        });
 
-      props.setLists(data);
-    });
+        props.setLists(data);
+      })
+      .catch((err) =>
+        console.log(
+          `Произошла ошибка загрузки списков из базы данных. Текст ошибки: ${err.message}`
+        )
+      );
   }
 
   const lists = props.lists.map((item) => {
