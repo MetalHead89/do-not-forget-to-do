@@ -18,20 +18,26 @@ $list: '.list';
     display: none;
   }
 
-  &:hover {
-    &::before {
-      position: absolute;
-      content: '';
-      width: 10px;
-      height: 10px;
-      background: black;
-      top: 10px;
-      right: 10px;
-      border-radius: 10px;
-    }
+  &__button-close {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+    padding: 0;
+    border: none;
+    background: black;
+    top: 10px;
+    right: 10px;
+    display: none;
+  }
 
+  &:hover {
     #{$list}__item-input {
       display: inline-block;
+    }
+
+    #{$list}__button-close {
+      display: block;
     }
   }
 

@@ -79,6 +79,7 @@ const List = (props: IList) => {
       </div>
       <div className="list__items-section">
         {items}
+        <button className="list__button-close"></button>
         <input
           className="list__item-input"
           type="text"
